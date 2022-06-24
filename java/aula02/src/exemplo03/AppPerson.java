@@ -18,7 +18,7 @@ public class AppPerson {
         System.out.println("digite a idade ");
         age = Integer.parseInt(sc.nextLine());
 
-        Person person2 = new Student(nome, "Java")
+        Person person2 = new Student(name, "Java");
 
         //student.name = "Laura";
         System.out.println(student.getName());
