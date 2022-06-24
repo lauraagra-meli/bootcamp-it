@@ -8,7 +8,7 @@ public class Clock {
     private int minute;
     private int second;
 
-    // construtor
+    // construtores
     public Clock(int hour, int minute, int second) { // parametros do construtor
         setHour(hour);
         setMinute(minute);
@@ -17,6 +17,15 @@ public class Clock {
 //        this.hour = hour;
 //        this.minute = minute;
 //        this.second = second;
+    }
+
+    // overload - sobrecarga
+    public Clock() { // polimorfismo - criando um novo construtor para não precisar passar os 3 parametros
+
+    }
+
+    public Clock(int hour) {
+        this.hour = hour;
     }
 
     // metodos de acesso (getters and setters)
