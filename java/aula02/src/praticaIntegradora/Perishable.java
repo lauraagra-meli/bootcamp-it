@@ -24,13 +24,13 @@ public class Perishable extends Product {
     public double calculate(int productsQuantity) {
 
         if (daysToExpire == 1) {
-            price /= 4;
+            return (price / 4) * productsQuantity;
         }
         if (daysToExpire == 2) {
-            price /= 3;
+            return (price / 3) * productsQuantity;
         }
         if (daysToExpire == 3) {
-            price /= 2;
+            return (price / 2) * productsQuantity;
         }
 
         return price * productsQuantity;
@@ -38,6 +38,6 @@ public class Perishable extends Product {
 
     @Override
     public String toString() {
-        return null;
+        return "Product: " + getName() + " , unit value - " + getPrice() + " , total value ";
     }
 }

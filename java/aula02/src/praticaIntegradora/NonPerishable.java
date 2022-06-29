@@ -21,12 +21,7 @@ public class NonPerishable extends Product {
     }
 
     @Override
-    public double calculate(int productsQuantity) {
-        return price * productsQuantity;
-    }
-
-    @Override
     public String toString() {
-        return null;
+        return getName();
     }
 }

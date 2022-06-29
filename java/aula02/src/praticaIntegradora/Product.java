@@ -35,6 +35,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return null;
+        return getName();
     }
 }

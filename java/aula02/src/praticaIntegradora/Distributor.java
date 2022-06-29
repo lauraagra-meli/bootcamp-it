@@ -14,6 +14,15 @@ public class Distributor {
 
         Scanner sc = new Scanner(System.in);
 
+//        List<Product> prod = new ArrayList<Product>();
+//        NonPerishable p = new NonPerishable("a", 1, "a");
+//        prod.add(p);
+//
+//        for (Product p1 : prod) {
+//            System.out.println(p1);
+//        }
+
+
         //List<Product> productList = new ArrayList<Product>();
         List<Perishable> productListP = new ArrayList<Perishable>();
         List<NonPerishable> productListNP = new ArrayList<NonPerishable>();
@@ -35,7 +44,7 @@ public class Distributor {
             System.out.println("Insert the products quantity of item? ");
             productQuantity = Integer.parseInt(sc.nextLine());
             totalProductP += productListP.get(i).calculate(productQuantity);
-            System.out.println(productListP.get(i).getName() + " - unit value - R$" + productListP.get(i).getPrice() + ", total value - R$" + totalProductP);
+            System.out.println(productListP.toString() + totalProductP);
             total += totalProductP;
 
             System.out.println("Insert the products quantity of item? ");
