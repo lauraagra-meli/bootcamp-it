@@ -23,13 +23,13 @@ public class Perishable extends Product {
     @Override
     public double calculate(int productsQuantity) {
 
-        if (daysToExpire <= 1) {
+        if (daysToExpire == 1) {
             price /= 4;
         }
-        if (daysToExpire <= 2) {
+        if (daysToExpire == 2) {
             price /= 3;
         }
-        if (daysToExpire <= 3) {
+        if (daysToExpire == 3) {
             price /= 2;
         }
 

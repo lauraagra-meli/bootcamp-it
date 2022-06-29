@@ -2,33 +2,58 @@ package praticaIntegradora;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Distributor {
     public static void main(String[] args) {
         Product product = new Product();
         NonPerishable nonPerishable = new NonPerishable();
         Perishable perishable = new Perishable();
+        int productQuantity = 0;
+        double total = 0;
 
-        List<Product> productList = new ArrayList<Product>();
+        Scanner sc = new Scanner(System.in);
 
-        productList.add(new Perishable("bread", 2, 2));
-        productList.add(new Perishable("butter", 4.23, 10));
-        productList.add(new Perishable("milk", 3.99, 22));
-        productList.add(new Perishable("meat", 10.89, 4));
+        //List<Product> productList = new ArrayList<Product>();
+        List<Perishable> productListP = new ArrayList<Perishable>();
+        List<NonPerishable> productListNP = new ArrayList<NonPerishable>();
 
-//        productList.add(new NonPerishable("rice", 10.99, "food"));
-//        productList.add(new NonPerishable("beans", 12.99, "food"));
-//        productList.add(new NonPerishable("pasta", 5.99, "food"));
-//        productList.add(new NonPerishable("floor", 2.89, "food"));
+        productListP.add(new Perishable("bread", 10, 2));
+        productListP.add(new Perishable("butter", 4, 1));
+        productListP.add(new Perishable("milk", 5, 3));
+        productListP.add(new Perishable("meat", 10.89, 4));
 
-        for (int i = 0; i < productList.size(); i++) {
-            double total = 0;
-            total += perishable.getPrice();
-            
-            System.out.println(total);
+        productListNP.add(new NonPerishable("rice", 10.99, "food"));
+        productListNP.add(new NonPerishable("beans", 12.99, "food"));
+        productListNP.add(new NonPerishable("pasta", 5.99, "food"));
+        productListNP.add(new NonPerishable("floor", 2.89, "food"));
 
-            System.out.print(productList.get(i).getName() + " - R$");
-            System.out.println(productList.get(i).getPrice());
+        for (int i = 0; i < productListP.size() && i < productListNP.size(); i++) {
+            double totalProductP = 0;
+            double totalProductNP = 0;
+
+            System.out.println("Insert the products quantity of item? ");
+            productQuantity = Integer.parseInt(sc.nextLine());
+            totalProductP += productListP.get(i).calculate(productQuantity);
+            System.out.println(productListP.get(i).getName() + " - unit value - R$" + productListP.get(i).getPrice() + ", total value - R$" + totalProductP);
+            total += totalProductP;
+
+            System.out.println("Insert the products quantity of item? ");
+            productQuantity = Integer.parseInt(sc.nextLine());
+            totalProductNP += productListNP.get(i).calculate(productQuantity);
+            System.out.println(productListNP.get(i).getName() + " - unit value - R$" + productListNP.get(i).getPrice() + ", total value - R$" + totalProductNP);
+            total += totalProductNP;
+
+//            if (productList.get(i) == perishable) {
+//                perishable.calculate(productQuantity);
+//                System.out.println(productQuantity);
+//            }
+//            if (productList.get(i) == perishable) {
+//                nonPerishable.calculate(productQuantity);
+//                System.out.println(productQuantity);
+//            }
         }
+
+        System.out.println("The purchase total: " + total);
     }
 }
