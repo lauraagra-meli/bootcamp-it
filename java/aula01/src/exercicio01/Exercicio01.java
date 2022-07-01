@@ -2,7 +2,7 @@ package exercicio01;
 
 public class Exercicio01 {
     public static void main(String[] args) {
-        String[] citiesVector = new String[]{"Londres", "Madrid", "Nova York", "Buenos Aires","Asuncion", "São Paulo", "Lima", "Santiago","Lisboa", "Tokio"}; // array de 10 posicoes
+        String[] citiesVector = new String[]{"Londres", "Madrid", "Nova York", "Buenos Aires", "Asuncion", "São Paulo", "Lima", "Santiago", "Lisboa", "Tokio"}; // array de 10 posicoes
         int[][] degreesMatrix = {
                 {-2, 33}, // 0,0 0,1
                 {-3, 32}, // 1,0 1,1
@@ -23,17 +23,15 @@ public class Exercicio01 {
 
 
         // percorrendo o vetor de cidades
-        for (int i=0; i < citiesVector.length; i++) {
-                for (int col = 0; col < degreesMatrix[0].length; col++) { // só precisa percorrer a coluna, porque a linha é a própria cidade
-                    if (degreesMatrix[i][0] < minDegree) {
-                        minDegree = degreesMatrix[i][0];
-                        minCity = citiesVector[i];
-                    }
-                    if (degreesMatrix[i][1] > maxDegree) {
-                        maxDegree = degreesMatrix[i][1];
-                        maxCity = citiesVector[i];
-                    }
-                }
+        for (int i = 0; i < citiesVector.length; i++) {
+            if (degreesMatrix[i][0] < minDegree) {
+                minDegree = degreesMatrix[i][0];
+                minCity = citiesVector[i];
+            }
+            if (degreesMatrix[i][1] > maxDegree) {
+                maxDegree = degreesMatrix[i][1];
+                maxCity = citiesVector[i];
+            }
         }
 
         System.out.println("A temperatura mais baixa foi em " + minCity + ", com " + minDegree + "ºC.");
