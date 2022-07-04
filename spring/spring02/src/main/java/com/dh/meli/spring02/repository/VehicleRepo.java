@@ -54,6 +54,7 @@ public class VehicleRepo {
     public void saveVehicle(Vehicle newVehicle) {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer (new DefaultPrettyPrinter()); // formata o json bonitinho
+        // Outra forma de deixar os dados no arquivo indentados:  ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         List<Vehicle> actualList = null;
 
         try {
