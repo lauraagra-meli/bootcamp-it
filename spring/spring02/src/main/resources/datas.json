@@ -1,0 +1,25 @@
+[ {
+  "plaque" : "ABC1232",
+  "model" : "Fusca",
+  "value" : 13000.0
+}, {
+  "plaque" : "DEF213",
+  "model" : "Lamborghini",
+  "value" : 200000.0
+}, {
+  "plaque" : "GSB2332",
+  "model" : "Impala",
+  "value" : 80000.0
+}, {
+  "plaque" : "TDS2343",
+  "model" : "Opala",
+  "value" : 56000.0
+}, {
+  "plaque" : "SXA1123",
+  "model" : "Civic",
+  "value" : 50000.0
+}, {
+  "plaque" : "SXA1123",
+  "model" : "Civic",
+  "value" : 50000.0
+} ]
