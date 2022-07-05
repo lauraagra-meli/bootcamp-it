@@ -23,6 +23,8 @@ public class VehicleController {
         if (v != null) {
             return ResponseEntity.ok(v);
         }
+
+
         return ResponseEntity.notFound().build();
     }
 

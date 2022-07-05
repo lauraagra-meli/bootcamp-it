@@ -1,5 +1,7 @@
 package com.dh.meli.spring02.repository;
 
+import com.dh.meli.spring02.exception.NotFoundExDetails;
+import com.dh.meli.spring02.exception.NotFoundException;
 import com.dh.meli.spring02.model.Vehicle;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,17 +26,26 @@ public class VehicleRepo {
             list = Arrays.asList(
                     mapper.readValue(new File(linkFile), Vehicle[].class));
 
-            // criterio pra retornar o veiculo (passar a placa no final da url)
-            for (Vehicle v:
-                 list) {
-                if (v.getPlaque().equals(plaque)) {
-                    return v;
-                }
-            }
         } catch (Exception e) {
 
         }
-        return null;
+
+//        NotFoundExDetails nf = NotFoundExDetails.builder()
+//                .message("sada...")
+//                .status(200)
+//                .title("erro")
+//                .build();
+
+        // criterio pra retornar o veiculo (passar a placa no final da url)
+        for (Vehicle v:
+                list) {
+            if (v.getPlaque().equals(plaque)) {
+                return v;
+            }
+        }
+
+        throw new NotFoundException("Vehicle not found.");
+//        return null;
     }
 
     public List<Vehicle> getAllVehicle() {
