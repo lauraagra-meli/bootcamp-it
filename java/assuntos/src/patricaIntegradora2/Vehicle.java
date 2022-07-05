@@ -1,6 +1,6 @@
 package patricaIntegradora2;
 
-public class Vehicle {
+public class Vehicle implements Comparable<Vehicle> {
     private String model;
     private String brand;
     private double price;
@@ -41,5 +41,14 @@ public class Vehicle {
     @Override
     public String toString() {
         return "Model: " + getModel() + " - Brand: " + getBrand() + " - Price: " + getPrice() + "\n";
+    }
+
+    @Override
+    public int compareTo(Vehicle v) {
+        return (int) (this.price - v.getPrice());
+    }
+
+    public int compareToBrand(Vehicle v) {
+        return this.getBrand().compareTo(v.getBrand());
     }
 }

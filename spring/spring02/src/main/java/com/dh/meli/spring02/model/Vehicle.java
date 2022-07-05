@@ -13,4 +13,5 @@ public class Vehicle {
     private String plaque;
     private String model;
     private double value;
+    private String renavan;
 }
