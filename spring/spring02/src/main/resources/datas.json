@@ -14,12 +14,19 @@
   "plaque" : "TDS2343",
   "model" : "Opala",
   "value" : 56000.0
-}, {
+},
+  {
+    "plaque" : "TDS2123",
+    "model" : "Opala",
+    "value" : 50000.0
+  },
+  {
   "plaque" : "SXA1123",
   "model" : "Civic",
   "value" : 50000.0
-}, {
-  "plaque" : "SXA1123",
-  "model" : "Civic",
-  "value" : 50000.0
-} ]
+},
+  {
+    "plaque" : "LXA1123",
+    "model" : "Civic",
+    "value" : 10000.0
+  }]

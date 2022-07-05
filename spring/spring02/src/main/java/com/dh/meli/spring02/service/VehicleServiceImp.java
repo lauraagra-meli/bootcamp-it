@@ -37,4 +37,32 @@ public class VehicleServiceImp implements VehicleService {
     public void saveVehicle(Vehicle newVehicle) {
         repo.saveVehicle(newVehicle);
     }
+
+    @Override
+    public List<VehicleDto> getAllVehicleByValue() {
+        List<Vehicle> listOfVehicles = repo.getAllVehicle();
+        return listOfVehicles.stream()
+                .sorted()
+                .map(VehicleDto::new) // pega um conjnto de transforma em outro
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehicleDto> getAllVehicleByModel() {
+        List<Vehicle> listOfVehicles = repo.getAllVehicle();
+        return listOfVehicles.stream()
+                .sorted((v1, v2) -> v1.getModel().compareTo(v2.getModel()))
+                .map(VehicleDto::new) // pega um conjnto de transforma em outro
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehicleDto> getByModel(String model) {
+        List<Vehicle> listOfVehicles = repo.getAllVehicle();
+        return listOfVehicles.stream()
+                .filter(v -> v.getModel().equals(model))
+                .map(VehicleDto::new) // pega um conjnto de transforma em outro
+                .collect(Collectors.toList());
+    }
+
 }

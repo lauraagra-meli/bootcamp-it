@@ -35,6 +35,24 @@ public class VehicleController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping("/allOrdered")
+    public ResponseEntity<List<VehicleDto>> getAllVehicleOrdered() {
+        List<VehicleDto> list = service.getAllVehicleByValue();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/allByModel")
+    public ResponseEntity<List<VehicleDto>> getAllVehicleByModel() {
+        List<VehicleDto> list = service.getAllVehicleByModel();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/byModel/{model}")
+    public ResponseEntity<List<VehicleDto>> getByModel(@PathVariable String model) {
+        List<VehicleDto> list = service.getByModel(model);
+        return ResponseEntity.ok(list);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.OK) // caso sempre de ok, ao inves de fazer return ResponseEntity.ok(list);
     public void saveVehicle(@RequestBody Vehicle newVehicle) {
