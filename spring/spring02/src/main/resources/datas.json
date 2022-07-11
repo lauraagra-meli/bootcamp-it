@@ -1,7 +1,8 @@
 [ {
   "plaque" : "ABC1232",
   "model" : "Fusca",
-  "value" : 13000.0
+  "value" : 13000.0,
+  "ownerId": 1
 }, {
   "plaque" : "DEF213",
   "model" : "Lamborghini",

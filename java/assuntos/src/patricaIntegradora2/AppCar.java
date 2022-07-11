@@ -20,18 +20,23 @@ public class AppCar {
         list.add(new Vehicle("Corola", "Toyota", 9090));
         list.add(new Vehicle("Fortuner", "Toyota", 10000));
 
-        System.out.println("Ordened list to PRICE: ");
+        System.out.println("Ordened list by PRICE: ");
         list.sort((v1, v2) -> v1.compareTo(v2));
         list.forEach(System.out::println);
 
-        System.out.println("Ordened list to BRAND: ");
+        System.out.println("Ordened list by BRAND: ");
         list.sort((v1, v2) -> v1.compareToBrand(v2));
         list.forEach(System.out::println);
 
-        System.out.println("Ordened list to PRICE: ");
-        list.stream()
-                        .filter(v -> v.getPrice());
+        System.out.println("Ordened list by PRICE < 1000: ");
+//        list.stream()
+//                .mapToDouble(v -> v.getPrice().);
 
-        System.out.println(list);
+        System.out.println("Ordened list by AVERAGE PRICE: ");
+        double average = list.stream()
+                .mapToDouble(v -> v.getPrice())
+                        .average().getAsDouble();
+
+        System.out.println(average);
     }
 }

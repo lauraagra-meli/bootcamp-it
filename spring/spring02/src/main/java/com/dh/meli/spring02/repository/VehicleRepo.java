@@ -1,6 +1,5 @@
 package com.dh.meli.spring02.repository;
 
-import com.dh.meli.spring02.exception.NotFoundExDetails;
 import com.dh.meli.spring02.exception.NotFoundException;
 import com.dh.meli.spring02.model.Vehicle;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
@@ -37,7 +36,7 @@ public class VehicleRepo {
 //                .build();
 
         // criterio pra retornar o veiculo (passar a placa no final da url)
-        for (Vehicle v:
+        for (Vehicle v :
                 list) {
             if (v.getPlaque().equals(plaque)) {
                 return v;
@@ -64,7 +63,7 @@ public class VehicleRepo {
 
     public void saveVehicle(Vehicle newVehicle) {
         ObjectMapper mapper = new ObjectMapper();
-        ObjectWriter writer = mapper.writer (new DefaultPrettyPrinter()); // formata o json bonitinho
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter()); // formata o json bonitinho
         // Outra forma de deixar os dados no arquivo indentados:  ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         List<Vehicle> actualList = null;
 

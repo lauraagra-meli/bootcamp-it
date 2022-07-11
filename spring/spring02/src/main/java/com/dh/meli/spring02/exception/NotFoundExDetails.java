@@ -12,6 +12,4 @@ public class NotFoundExDetails {
     private int status;
     private String message;
     private LocalDateTime timestamp;
-
-
 }

@@ -2,7 +2,6 @@ package com.dh.meli.spring02.controller;
 
 import com.dh.meli.spring02.dto.VehicleDto;
 import com.dh.meli.spring02.model.Vehicle;
-import com.dh.meli.spring02.repository.VehicleRepo;
 import com.dh.meli.spring02.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
