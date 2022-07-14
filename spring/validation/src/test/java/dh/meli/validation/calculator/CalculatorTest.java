@@ -39,7 +39,7 @@ class CalculatorTest {
         double b = 0;
         double expected = 0; // o que espera
 
-        double result = calculator.divider(a, b); // chama o metodo
+        double result = calculator.divider(); // chama o metodo
 
         Assertions.assertEquals(expected, result); // o que espera e resultado
     }
