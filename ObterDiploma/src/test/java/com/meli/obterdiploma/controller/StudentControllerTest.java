@@ -57,7 +57,7 @@ class StudentControllerTest {
 
         ResponseEntity<StudentDTO> response = controller.registerStudent(newStudent);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isNotNull(); // pode encadear varias coisas
         assertThat(response.getBody().getId())
                 .isNotNull()
@@ -88,17 +88,17 @@ class StudentControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
 
-    @Test
-    void modifyStudent() {
-        StudentDTO studentDTO = TestUtilsGenerator.getStudentWithId();
-        ResponseEntity<Void> response = controller.modifyStudent(studentDTO);
+//    @Test
+//    void modifyStudent() {
+//        StudentDTO studentDTO = TestUtilsGenerator.getStudentWithId();
+//        ResponseEntity<Void> response = controller.modifyStudent(studentDTO);
+//
+//        verify(studentService, atLeastOnce()).update(studentDTO);
+//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+//    }
 
-        verify(studentService, atLeastOnce()).update(studentDTO);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-    }
-
-    @Test
-    void listStudents() {
-
-    }
+//    @Test
+//    void listStudents() {
+//
+//    }
 }

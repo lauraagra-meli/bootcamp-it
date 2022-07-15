@@ -30,7 +30,7 @@ class StudentServiceTest {
     // QUANDO PEDIR PARA GERAR O STUDENT SERVICE É NECESSARIO INFORMAR QUE TEREMOS MOCKS. GERA UM OBJETO PARA
     // SER CONSUMINDO DENTRO DO TESTE E AS DEPENDÊNCIAS DELE SERÃO GERADAS VIA MOCK
     @InjectMocks
-    StudentService service;
+    StudentService service; // o cara que vou testar
 
     // INFORMO QUE ESSA IMPLEMENTAÇÃO É QUE SERÁ MOCKADA
     @Mock

@@ -18,9 +18,7 @@ import java.util.*;
 public class StudentDAO implements IStudentDAO {
 
     private String SCOPE;
-
-    private Set<StudentDTO> students;
-
+    private static HashMap<Long, StudentDTO> students;
 
     public StudentDAO() {
         Properties properties = new Properties();
@@ -35,37 +33,30 @@ public class StudentDAO implements IStudentDAO {
     }
 
     @Override
-    public StudentDTO save(StudentDTO student) {
-        Optional<StudentDTO> studentDTO = students.stream()
-                .filter(s -> Objects.equals(s.getId(), student.getId())).findFirst();
+    public StudentDTO save(StudentDTO studentReceived) {
+        boolean studentNotExist = !exists(studentReceived);
+        boolean studentHasId = studentReceived.getId() != null;
 
-        StudentDTO lastStudentDTO = students
-                        .stream()
-                        .max(Comparator.comparing(StudentDTO::getId))
-                        .orElseThrow(() -> new StudentNotFoundException(student.getId()));
+        if (studentHasId && studentNotExist) {
+            throw new StudentNotFoundException(studentReceived.getId());
+        }
+        StudentDTO studentToBeSaved = new StudentDTO(studentReceived);
 
-        Long newStudentID = (lastStudentDTO.getId()) + 1L;
-
-        if (student.getId() != null && studentDTO.isEmpty()) {
-            throw new StudentNotFoundException(student.getId());
+        if (studentNotExist) {
+            Long largerIndex = (students.size() > 0) ? Collections.max(students.keySet()) : 0L;
+            studentToBeSaved.setId((largerIndex + 1L));
         }
 
-        if (studentDTO.isEmpty()) {
-            student.setId((this.students.size() + 1L));
-        }
-
-        students.add(student);
-
+        students.put(studentToBeSaved.getId(), studentToBeSaved);
         this.saveData();
-
-        return student;
+        return studentToBeSaved;
     }
 
     @Override
     public void delete(Long id) {
         StudentDTO found = this.findById(id);
 
-        students.remove(found);
+        students.remove(found.getId());
         this.saveData();
     }
 
@@ -82,20 +73,22 @@ public class StudentDAO implements IStudentDAO {
 
     @Override
     public StudentDTO findById(Long id) {
-        return students.stream()
-                .filter(stu -> stu.getId().equals(id))
-                .findFirst().orElseThrow(() -> new StudentNotFoundException(id));
+        loadData();
+        StudentDTO studentDTO = students.get(id);
+        if (studentDTO != null) {
+            return studentDTO;
+        }
+        throw new StudentNotFoundException(id);
     }
 
     private void loadData() {
-        Set<StudentDTO> loadedData = new HashSet<>(); // nao pode ter dois estudantes com o mesmo id
+        HashMap<Long, StudentDTO> loadedData = null; // nao pode ter dois estudantes com o mesmo id
 
         ObjectMapper objectMapper = new ObjectMapper();
         File file;
         try {
             file = ResourceUtils.getFile("./src/" + SCOPE + "/resources/users.json");
-            loadedData = objectMapper.readValue(file, new TypeReference<Set<StudentDTO>>() {
-            });
+            loadedData = objectMapper.readValue(file, new TypeReference<HashMap<Long, StudentDTO>>() {});
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Failed while initializing DB, check your resources files");

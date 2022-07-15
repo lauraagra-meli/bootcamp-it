@@ -4,6 +4,7 @@ import com.meli.obterdiploma.model.StudentDTO;
 import com.meli.obterdiploma.repository.StudentDAO;
 import com.meli.obterdiploma.util.TestUtilsGenerator;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.http.HttpEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +30,7 @@ public class StudentIntegration {
     TestRestTemplate testRestTemplate; // permite fazer requisicoes quando o cliente vai fazer chamada cliente servidor - classe especifica usada pra fazer teste
 
     // antes de cada teste
-    @BeforeEach
+    @BeforeEach @AfterEach
     public void setup() {
         // limpa o arquivo
         TestUtilsGenerator.emptyUsersFile();
@@ -98,10 +99,12 @@ public class StudentIntegration {
     @Test
     @DisplayName("get student")
     public void getStudent_returnStudent_whenStudentExist() {
-        StudentDTO newStudent = TestUtilsGenerator.getNewStudentWithOneSubject();
         String baseUrl = "http://localhost:" + port + "/student/getStudent"; // pra montar a url + a porta definida la em cima + a rota
+
+        StudentDTO newStudent = TestUtilsGenerator.getNewStudentWithOneSubject();
         StudentDAO dao = new StudentDAO();
         StudentDTO studentSaved = dao.save(newStudent);
+        dao = null;
 
         // format gera uma nova string a partir de uma string colocada, o %d converte o valor
         String url = String.format(baseUrl + "%d", studentSaved.getId());
