@@ -2,7 +2,7 @@
 create database bd_meli01;
 
 -- coloca o BD bd_meli01 como o banco deafult
-use bd_meli01;
+use bd_meli01tb_usertb_user;
 
 -- criar tabela
 create table user (
@@ -31,3 +31,5 @@ where id = 2;
 -- alterando estrutura da tabela
 alter table user
 add constraint unique (email);
+
+insert into tb_user values(null, ); -- gera em ordem alfabetica, e nao como criamos
